@@ -1,36 +1,23 @@
 name: Android APK Build
 'on':
 workflow_dispatch:
-
 jobs:
 build:
 runs-on: ubuntu-latest
 steps:
-- name: Checkout
-uses: actions/checkout@v4
-
-  - name: Setup Java
-    uses: actions/setup-java@v4
-    with:
-      distribution: temurin
-      java-version: '17'
-
-  - name: Setup Gradle
-    uses: gradle/actions/setup-gradle@v4
-    with:
-      gradle-version: '8.7'
-
-  - name: Setup Android SDK
-    uses: android-actions/setup-android@v3
-
-  - name: Build APK
-    run: |
-      gradle wrapper --gradle-version 8.7
-      gradle --no-daemon assembleDebug
-
-  - name: Upload APK
-    uses: actions/upload-artifact@v4
-    with:
-      name: ai-live-screen-agent-debug-apk
-      path: app/build/outputs/apk/debug/*.apk
-      if-no-files-found: error
+- uses: actions/checkout@v4
+- uses: actions/setup-java@v4
+with:
+distribution: temurin
+java-version: '17'
+- uses: gradle/actions/setup-gradle@v4
+with:
+gradle-version: '8.7'
+- uses: android-actions/setup-android@v3
+- run: gradle wrapper --gradle-version 8.7
+- run: gradle --no-daemon assembleDebug
+- uses: actions/upload-artifact@v4
+with:
+name: ai-live-screen-agent-debug-apk
+path: app/build/outputs/apk/debug/*.apk
+if-no-files-found: error
