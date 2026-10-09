@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AI Live Screen Agent</string>
+    <string name="service_description">Lets AI Live Screen Agent read on-screen text and perform taps, swipes, Back and text entry that you request and approve. It acts only while you have pressed Start Agent. Some apps and protected screens (banking, DRM, secure windows) cannot be read or controlled.</string>
+</resources>
